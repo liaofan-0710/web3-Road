@@ -28,6 +28,7 @@ func Routers() *gin.Engine {
 	{
 		systemRouter.InitApiRouter(PublicGroup)
 		systemRouter.OperatePostRouter(PublicGroup)
+		systemRouter.OperateCommentsRouter(PublicGroup)
 	}
 	PrivateGroup := Router.Group("")
 	PrivateGroup.Use(middleware.JWTAuth())

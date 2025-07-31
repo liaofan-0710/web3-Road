@@ -4,4 +4,5 @@ type ServiceGroup struct {
 	JwtService
 	ApiService
 	PostService
+	CommentsService
 }

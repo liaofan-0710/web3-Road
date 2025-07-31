@@ -73,3 +73,15 @@
 2025/07/31 - 22:30:56.428	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:18	register swagger handler
 2025/07/31 - 22:30:56.429	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
 2025/07/31 - 22:30:56.429	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/31 - 22:46:35.908	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:18	register swagger handler
+2025/07/31 - 22:46:35.912	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:41	router register success
+2025/07/31 - 22:46:35.912	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/31 - 22:50:42.993	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:18	register swagger handler
+2025/07/31 - 22:50:42.996	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:41	router register success
+2025/07/31 - 22:50:42.996	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/31 - 22:56:40.655	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:18	register swagger handler
+2025/07/31 - 22:56:40.657	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:41	router register success
+2025/07/31 - 22:56:40.657	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/31 - 22:57:41.192	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:18	register swagger handler
+2025/07/31 - 22:57:41.194	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:41	router register success
+2025/07/31 - 22:57:41.195	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}

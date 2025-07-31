@@ -60,15 +60,11 @@ func (p PostApi) PostCreate(c *gin.Context) {
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/enroll [post]
 func (p PostApi) PostQuery(c *gin.Context) {
-	var post []model.Post
 	var postRes []response.Post
-	if err := global.BG_DB.Model(model.Post{}).Find(&post).Error; err != nil {
+
+	if err := global.BG_DB.Model(model.Post{}).Find(&postRes).Error; err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
-	}
-
-	for _, v := range post {
-		postRes = append(postRes, response.Post{Title: v.Title, Content: v.Content})
 	}
 
 	response.OkWithData(postRes, c)

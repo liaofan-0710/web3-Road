@@ -10,7 +10,6 @@ import (
 	"github.com/go-redis/redis/v8"
 	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
 )
 
 type SystemApiApi struct{}
@@ -27,13 +26,13 @@ type SystemApiApi struct{}
 func (s SystemApiApi) Enroll(c *gin.Context) {
 	var user request.EnrollUser
 	if err := c.ShouldBindJSON(&user); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
 	// 加密密码
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to hash password"})
+		response.FailWithMessage("error: Failed to hash password"+err.Error(), c)
 		return
 	}
 	userInfo := model.User{
@@ -42,11 +41,11 @@ func (s SystemApiApi) Enroll(c *gin.Context) {
 		Email:    user.Email,
 	}
 	if err := global.BG_DB.Create(&userInfo).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create user"})
+		response.FailWithMessage("error: Failed to create user"+err.Error(), c)
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"message": "User registered successfully"})
+	response.OkWithData("User registered successfully", c)
 }
 
 // Login
@@ -61,18 +60,18 @@ func (s SystemApiApi) Enroll(c *gin.Context) {
 func (s SystemApiApi) Login(c *gin.Context) {
 	var user request.LoginUser
 	if err := c.ShouldBindJSON(&user); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		response.FailWithMessage("error"+err.Error(), c)
 		return
 	}
 	var storedUser model.User
 	if err := global.BG_DB.Where("username = ?", user.Username).First(&storedUser).Error; err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid username or password"})
+		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
 
 	// 验证密码
 	if err := bcrypt.CompareHashAndPassword([]byte(storedUser.Password), []byte(user.Password)); err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid username or password"})
+		response.FailWithMessage("error: Invalid username or password", c)
 		return
 	}
 

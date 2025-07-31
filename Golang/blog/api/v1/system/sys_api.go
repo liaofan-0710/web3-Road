@@ -45,7 +45,7 @@ func (s SystemApiApi) Enroll(c *gin.Context) {
 		return
 	}
 
-	response.OkWithData("User registered successfully", c)
+	response.OkWithMessage("User registered successfully", c)
 }
 
 // Login

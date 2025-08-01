@@ -2,6 +2,7 @@ package utils
 
 import (
 	"errors"
+	"github.com/gin-gonic/gin"
 	"time"
 
 	jwt "github.com/golang-jwt/jwt/v4"
@@ -84,4 +85,16 @@ func (j *JWT) ParseToken(tokenString string) (*request.CustomClaims, error) {
 	} else {
 		return nil, TokenInvalid
 	}
+}
+
+func GetContextUserInfo(c *gin.Context) (baseClaims *request.CustomClaims, err error) {
+	claims, ok := c.Get("claims")
+	if !ok {
+		return baseClaims, errors.New("user get fial")
+	}
+	baseClaims, ok = claims.(*request.CustomClaims)
+	if !ok {
+		return baseClaims, errors.New("claims type mismatch")
+	}
+	return baseClaims, nil
 }

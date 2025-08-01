@@ -1,10 +1,10 @@
 package system
 
 import (
-	"Project/global"
 	"Project/model"
 	"Project/model/request"
 	"Project/model/response"
+	"Project/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,14 +20,9 @@ type CommentsApi struct{}
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/enroll [post]
 func (p CommentsApi) CommentsCreate(c *gin.Context) {
-	claims, ok := c.Get("claims")
-	if !ok {
-		response.FailWithMessage("user get fial", c)
-		return
-	}
-	baseClaims, ok := claims.(*request.CustomClaims)
-	if !ok {
-		response.FailWithMessage("claims type mismatch", c)
+	baseClaims, err := utils.GetContextUserInfo(c)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
 		return
 	}
 
@@ -41,8 +36,7 @@ func (p CommentsApi) CommentsCreate(c *gin.Context) {
 		Content: com.Content,
 		UserID:  baseClaims.ID,
 	}
-
-	if err := global.BG_DB.Model(model.Comment{}).Create(&createCom).Error; err != nil {
+	if err = commentsService.CreateComment(createCom); err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
@@ -65,8 +59,9 @@ func (p CommentsApi) CommentsQuery(c *gin.Context) {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
-	var comRes []response.Comment
-	if err := global.BG_DB.Model(model.Comment{}).Where("post_id = ?", comReq.PostID).Find(&comRes).Error; err != nil {
+
+	comRes, err := commentsService.GetComment(comReq.PostID)
+	if err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}

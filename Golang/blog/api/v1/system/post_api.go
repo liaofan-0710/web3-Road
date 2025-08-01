@@ -5,6 +5,7 @@ import (
 	"Project/model"
 	"Project/model/request"
 	"Project/model/response"
+	"Project/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,14 +21,9 @@ type PostApi struct{}
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/enroll [post]
 func (p PostApi) PostCreate(c *gin.Context) {
-	claims, ok := c.Get("claims")
-	if !ok {
-		response.FailWithMessage("user get fial", c)
-		return
-	}
-	baseClaims, ok := claims.(*request.CustomClaims)
-	if !ok {
-		response.FailWithMessage("claims type mismatch", c)
+	baseClaims, err := utils.GetContextUserInfo(c)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
 		return
 	}
 
@@ -42,11 +38,10 @@ func (p PostApi) PostCreate(c *gin.Context) {
 		UserID:  baseClaims.ID,
 	}
 
-	if err := global.BG_DB.Model(model.Post{}).Create(&createPost).Error; err != nil {
+	if err := postService.CreatePost(createPost); err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
-
 	response.Ok(c)
 }
 
@@ -60,9 +55,8 @@ func (p PostApi) PostCreate(c *gin.Context) {
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/enroll [post]
 func (p PostApi) PostQuery(c *gin.Context) {
-	var postRes []response.Post
-
-	if err := global.BG_DB.Model(model.Post{}).Find(&postRes).Error; err != nil {
+	postRes, err := postService.QueryPost()
+	if err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
@@ -80,35 +74,32 @@ func (p PostApi) PostQuery(c *gin.Context) {
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/enroll [post]
 func (p PostApi) PostUpdate(c *gin.Context) {
-	claims, ok := c.Get("claims")
-	if !ok {
-		response.FailWithMessage("user get fial", c)
-		return
-	}
-	baseClaims, ok := claims.(*request.CustomClaims)
-	if !ok {
-		response.FailWithMessage("claims type mismatch", c)
+	baseClaims, err := utils.GetContextUserInfo(c)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
 		return
 	}
 
 	var post request.PostUpdate
-	var postModel model.Post
 	if err := c.ShouldBindJSON(&post); err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
 	// 判断该文章是否属于当前作者，否则返回无权限操作
-	if err := global.BG_DB.Model(model.Post{}).Where("id = ?", post.ID).First(&postModel).Error; err != nil {
+	postModel, err := postService.GetPost(post.ID)
+	if err != nil {
 		response.FailWithMessage("查无此文章"+err.Error(), c)
 		return
+	}
+	if err := global.BG_DB.Model(model.Post{}).Where("id = ?", post.ID).First(&postModel).Error; err != nil {
+
 	}
 	if postModel.UserID != baseClaims.ID {
 		response.FailWithMessage("你无权限操作该文章", c)
 		return
 	}
-	if err := global.BG_DB.Model(model.Post{}).
-		Where("user_id = ?", baseClaims.ID).Where("id = ?", post.ID).
-		Update("title", post.Title).Update("content", post.Content).Error; err != nil {
+
+	if err := postService.UpdatePost(post, baseClaims.ID); err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
@@ -126,24 +117,19 @@ func (p PostApi) PostUpdate(c *gin.Context) {
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/enroll [post]
 func (p PostApi) PostDelete(c *gin.Context) {
-	claims, ok := c.Get("claims")
-	if !ok {
-		response.FailWithMessage("user get fial", c)
-		return
-	}
-	baseClaims, ok := claims.(*request.CustomClaims)
-	if !ok {
-		response.FailWithMessage("claims type mismatch", c)
+	baseClaims, err := utils.GetContextUserInfo(c)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
 		return
 	}
 
 	var post request.PostDelete
-	var postModel model.Post
 	if err := c.ShouldBindJSON(&post); err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
-	if err := global.BG_DB.Model(model.Post{}).Where("id = ?", post.ID).First(&postModel).Error; err != nil {
+	postModel, err := postService.GetPost(post.ID)
+	if err != nil {
 		response.FailWithMessage("查无此文章"+err.Error(), c)
 		return
 	}
@@ -151,8 +137,7 @@ func (p PostApi) PostDelete(c *gin.Context) {
 		response.FailWithMessage("你无权限操作该文章", c)
 		return
 	}
-	if err := global.BG_DB.Model(model.Post{}).Where("id = ?", post.ID).Where("user_id = ?", baseClaims.ID).
-		Delete(&model.Post{}).Error; err != nil {
+	if err = postService.DeletePost(post.ID, baseClaims.ID); err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}

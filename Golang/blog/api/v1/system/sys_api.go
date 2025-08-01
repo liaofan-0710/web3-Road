@@ -12,7 +12,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-type SystemApiApi struct{}
+type SysApiApi struct{}
 
 // Enroll
 // @Tags      SysApi
@@ -20,19 +20,19 @@ type SystemApiApi struct{}
 // @Security  ApiKeyAuth
 // @accept    application/json
 // @Produce   application/json
-// @Param     data  body      system.SysApi                  true  "api路径, api中文描述, api组, 方法"
+// @Param     data  body      system.SysApiApi                  true  "api路径, api中文描述, api组, 方法"
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/enroll [post]
-func (s SystemApiApi) Enroll(c *gin.Context) {
+func (s SysApiApi) Enroll(c *gin.Context) {
 	var user request.EnrollUser
 	if err := c.ShouldBindJSON(&user); err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
 	// 加密密码
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
-	if err != nil {
-		response.FailWithMessage("error: Failed to hash password"+err.Error(), c)
+	hashedPassword, err1 := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	if err1 != nil {
+		response.FailWithMessage("error: Failed to hash password"+err1.Error(), c)
 		return
 	}
 	userInfo := model.User{
@@ -40,8 +40,8 @@ func (s SystemApiApi) Enroll(c *gin.Context) {
 		Password: string(hashedPassword),
 		Email:    user.Email,
 	}
-	if err := global.BG_DB.Create(&userInfo).Error; err != nil {
-		response.FailWithMessage("error: Failed to create user"+err.Error(), c)
+	if err := apiService.CreateUsers(userInfo).Error; err != nil {
+		response.FailWithMessage("error: Failed to create user", c)
 		return
 	}
 
@@ -49,22 +49,23 @@ func (s SystemApiApi) Enroll(c *gin.Context) {
 }
 
 // Login
-// @Tags      SysApi
+// @Tags      SysApiApi
 // @Summary   用户登录接口
 // @Security  ApiKeyAuth
 // @accept    application/json
 // @Produce   application/json
-// @Param     data  body      system.SysApi                  true  "api路径, api中文描述, api组, 方法"
+// @Param     data  body      system.SysApiApi                  true  "api路径, api中文描述, api组, 方法"
 // @Success   200   {object}  response.Response{msg=string}  "创建基础api"
 // @Router    /api/login [post]
-func (s SystemApiApi) Login(c *gin.Context) {
+func (s SysApiApi) Login(c *gin.Context) {
 	var user request.LoginUser
 	if err := c.ShouldBindJSON(&user); err != nil {
 		response.FailWithMessage("error"+err.Error(), c)
 		return
 	}
-	var storedUser model.User
-	if err := global.BG_DB.Where("username = ?", user.Username).First(&storedUser).Error; err != nil {
+
+	storedUser, err := apiService.GetUsers(user.Username)
+	if err != nil {
 		response.FailWithMessage("error: "+err.Error(), c)
 		return
 	}
@@ -91,7 +92,7 @@ func (s SystemApiApi) Login(c *gin.Context) {
 }
 
 // TokenNext 登录以后签发jwt
-func (b *SystemApiApi) TokenNext(c *gin.Context, user model.User) {
+func (s SysApiApi) TokenNext(c *gin.Context, user model.User) {
 	j := &utils.JWT{SigningKey: []byte(global.BG_CONFIG.JWT.SigningKey)} // 唯一签名
 	claims := j.CreateClaims(request.BaseClaims{
 		ID:       user.ID,

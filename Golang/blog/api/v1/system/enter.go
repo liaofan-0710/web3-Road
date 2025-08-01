@@ -3,7 +3,7 @@ package system
 import "Project/service"
 
 type ApiGroup struct {
-	SystemApiApi
+	SysApiApi
 	JwtApi
 	PostApi
 	CommentsApi

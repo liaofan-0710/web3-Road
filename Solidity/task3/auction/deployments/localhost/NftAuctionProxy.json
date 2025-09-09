@@ -1,0 +1,31 @@
+{
+  "address": "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+  "abi": [
+    "error AddressEmptyCode(address)",
+    "error ERC1967InvalidImplementation(address)",
+    "error ERC1967NonPayable()",
+    "error FailedCall()",
+    "error InvalidInitialization()",
+    "error NotInitializing()",
+    "error UUPSUnauthorizedCallContext()",
+    "error UUPSUnsupportedProxiableUUID(bytes32)",
+    "event AuctionCreated(address indexed,address indexed,address,uint256)",
+    "event Initialized(uint64)",
+    "event Upgraded(address indexed)",
+    "function UPGRADE_INTERFACE_VERSION() view returns (string)",
+    "function admin() view returns (address)",
+    "function auctionMap(uint256) view returns (address)",
+    "function auctions(uint256) view returns (address)",
+    "function createAuctionFactory(uint256) returns (address)",
+    "function currentAuction() view returns (address,uint256,uint256,uint256,bool,address,uint256,address,uint256,address)",
+    "function feeRate() view returns (uint256)",
+    "function feeRecipient() view returns (address)",
+    "function getAuction(uint256) view returns (address)",
+    "function getAuctions() view returns (address[])",
+    "function initialize(address,uint256,uint256,address,uint256,address,uint256)",
+    "function proxiableUUID() view returns (bytes32)",
+    "function seller() view returns (address)",
+    "function upgradeToAndCall(address,bytes) payable"
+  ],
+  "numDeployments": 6
+}

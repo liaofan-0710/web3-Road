@@ -1,0 +1,51 @@
+2025/07/26 - 14:31:49.443	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:31:49.444	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:31:49.444	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9090"}
+2025/07/26 - 14:36:19.328	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:36:19.329	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:36:19.329	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:36:19.329	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9090"}
+2025/07/26 - 14:37:34.135	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:37:34.136	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:37:34.136	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:37:34.136	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9090"}
+2025/07/26 - 14:40:40.732	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:40:40.733	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:40:40.733	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:40:40.733	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9090"}
+2025/07/26 - 14:43:08.348	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:43:08.349	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:43:08.349	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:43:08.349	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:48:05.542	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:48:05.543	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:48:05.544	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:48:05.544	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:48:29.708	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:48:29.710	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:48:29.710	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:48:29.711	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:50:13.533	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:50:13.534	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:50:13.534	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:50:13.534	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:50:29.799	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:50:29.800	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:50:29.800	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:50:29.800	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:51:25.485	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:51:25.487	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:51:25.487	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:51:25.487	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:52:41.602	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:52:41.604	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:52:41.604	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:52:41.604	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:52:59.486	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:52:59.488	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:52:59.488	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:52:59.488	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}
+2025/07/26 - 14:54:05.175	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/gorm.go:34	register table success
+2025/07/26 - 14:54:05.176	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:19	register swagger handler
+2025/07/26 - 14:54:05.176	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/initialize/router.go:40	router register success
+2025/07/26 - 14:54:05.176	[34minfo[0m	/Users/liuchao/Downloads/golang/web3-Road/Golang/blog/core/server.go:41	service run success on 	{"address": ":9999"}

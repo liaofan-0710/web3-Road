@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	client, err := ethclient.Dial("https://eth-mainnet.g.alchemy.com/v2/P0AtFolBHAoBDO5Sq73Nn")
+	client, err := ethclient.Dial("https://eth-sepolia.g.alchemy.com/v2/")
 	if err != nil {
 		log.Fatal(err)
 	}

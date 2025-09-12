@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	//client, err := ethclient.Dial("https://rinkeby.infura.io")
+	// client, err := ethclient.Dial("https://rinkeby.infura.io")
 	client, err := ethclient.Dial("https://eth-sepolia.g.alchemy.com/v2/xxx")
 	if err != nil {
 		log.Fatal(err)

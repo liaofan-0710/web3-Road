@@ -65,7 +65,7 @@ func main() {
 	copy(key[:], []byte("demo_save_key"))
 	copy(value[:], []byte("demo_save_value11111"))
 
-	// // 初始化交易opt实例
+	// 初始化交易opt实例
 	opt, err := bind.NewKeyedTransactorWithChainID(privateKey, big.NewInt(11155111))
 	if err != nil {
 		log.Fatal("NewKeyedTransactorWithChainID err:", err)
